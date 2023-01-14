@@ -3,6 +3,7 @@
 */*.sh
 */*.pl
 */*.nvim
+*/*.bak
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
