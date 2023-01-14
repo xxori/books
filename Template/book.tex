@@ -1,0 +1,39 @@
+\documentclass[a5paper, openany]{memoir}
+
+\usepackage[inner=0.7in,outer=0.5in]{geometry}
+\usepackage{lettrine}
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+\makeoddfoot{plain}{}{}{\thepage} % page number on the bottom right
+\makepagestyle{pter}
+\makeoddhead{pter}{\itshape\leftmark}{}{}
+\makeevenhead{pter}{}{}{\itshape\leftmark}
+\makeoddfoot{pter}{}{\thepage}{}
+\makeevenfoot{pter}{}{\thepage}{}
+
+\pagestyle{pter}
+\chapterstyle{dash}
+
+\setlength{\parskip}{0.5\baselineskip}%
+\setlength{\parindent}{0pt}%
+
+\pretolerance=10000
+\tolerance=2000 
+\emergencystretch=10pt
+
+\usepackage[english,shorthands=off]{babel}
+\babelfont{rm}[Path=/Users/patrick/Library/Fonts,%
+ BoldFont=LinLibertine_RB.otf,%
+ BoldItalicFont=LinLibertine_RBI.otf,%
+ ItalicFont=LinLibertine_RI.otf]{LinLibertine_R.otf}
+\babelfont{tt}[Scale=MatchLowercase,%
+ Path=/Users/patrick/Library/Fonts,%
+ BoldFont=cmuntb.ttf,%
+ BoldItalicFont=cmuntx.ttf,%
+ ItalicFont=cmunit.ttf]{cmuntt.ttf}
+\babelfont{sf}[Scale=MatchLowercase,%
+ Path=/Users/patrick/Library/Fonts,%
+ BoldFont=cmunsx.ttf,%
+ BoldItalicFont=cmunso.ttf,%
+ ItalicFont=cmunsi.ttf]{cmunss.ttf}

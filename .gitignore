@@ -1,3 +1,9 @@
+.DS_Store
+*.psd
+*/*.sh
+*/*.pl
+*/*.nvim
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof

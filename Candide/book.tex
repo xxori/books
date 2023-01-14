@@ -1,0 +1,126 @@
+\documentclass[a5paper,openany,11pt]{memoir}
+
+\usepackage[inner=0.7in,outer=0.5in]{geometry}
+\usepackage{lettrine}
+\usepackage{graphicx}
+\usepackage[final]{microtype}
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+\newcommand{\chapter}[1]{\begingroup
+\let\clearpage\relax
+\chapter{#1}
+\endgroup}
+
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
+
+\makepagestyle{pter}
+\makeoddhead{pter}{}{}{Candide}
+\makeevenhead{pter}{Voltaire}{}{}
+\makeoddfoot{pter}{}{\thepage}{}
+\makeevenfoot{pter}{}{\thepage}{}
+
+\pagestyle{pter}
+\chapterstyle{thatcher}
+
+\setlength{\parskip}{0.5\baselineskip}%
+\setlength{\parindent}{0pt}%
+
+\pretolerance=10000
+\tolerance=2000 
+\emergencystretch=10pt
+
+\usepackage[english,shorthands=off]{babel}
+\babelfont{rm}[Path=/Users/patrick/Library/Fonts/,%
+ BoldFont=LinLibertine_RB.otf,%
+ BoldItalicFont=LinLibertine_RBI.otf,%
+ ItalicFont=LinLibertine_RI.otf]{LinLibertine_R.otf}
+\babelfont{tt}[Scale=MatchLowercase,%
+ Path=/Users/patrick/Library/Fonts/,%
+ BoldFont=cmuntb.ttf,%
+ BoldItalicFont=cmuntx.ttf,%
+ ItalicFont=cmunit.ttf]{cmuntt.ttf}
+\babelfont{sf}[Scale=MatchLowercase,%
+ Path=/Users/patrick/Library/Fonts/,%
+ BoldFont=cmunsx.ttf,%
+ BoldItalicFont=cmunso.ttf,%
+ ItalicFont=cmunsi.ttf]{cmunss.ttf}
+
+\newcommand{\chapter}[1]{\let\clearpage\relax\chapter{#1}hello}
+
+\begin{document}
+\thispagestyle{empty}
+\begin{center}
+\vspace*{3cm}
+\includegraphics[scale=0.6]{001.jpg}\\
+\vspace*{3cm}
+\textsc{Voltaire}\\
+\vspace*{.5cm}
+{\Huge Candide}\\
+\end{center}
+\newpage
+\thispagestyle{empty}
+\phantom{bottom}
+\vfill
+\textsc{Candide}\\
+Written by \textsc{Voltaire} \\
+First published in 1759 \\
+Commentary by \textsc{Philip Littell} \\
+Typeset and designed by \textsc{Patrick Thompson} \\
+\\
+This work is dedicated to the public domain
+\frontmatter
+\begin{KeepFromToc}
+\tableofcontents
+\end{KeepFromToc}
+\input{introduction}
+\clearpage
+\vspace*{4cm}
+\thispagestyle{empty}
+\begin{center}
+\huge Candide \\
+\vspace*{2cm}
+\includegraphics[scale=0.2]{002.jpg}	
+\end{center}
+\newpage
+\mainmatter
+\input{chapter1}
+\input{chapter2}
+\input{chapter3}
+\input{chapter4}
+\input{chapter5}
+\input{chapter6}
+\input{chapter7}
+\input{chapter8}
+\input{chapter9}
+\input{chapter10}
+\input{chapter11}
+\input{chapter12}
+\input{chapter13}
+\input{chapter14}
+\input{chapter15}
+\input{chapter16}
+\input{chapter17}
+\input{chapter18}
+\input{chapter19}
+\input{chapter20}
+\input{chapter21}
+\input{chapter22}
+\input{chapter23}
+\input{chapter24}
+\input{chapter25}
+\input{chapter26}
+\input{chapter27}
+\input{chapter28}
+\input{chapter29}
+\input{chapter30}
+\newpage
+\thispagestyle{empty}
+\phantom{empty}
+\newpage
+\thispagestyle{empty}
+\phantom{empty}
+\end{document}
