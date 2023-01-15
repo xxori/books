@@ -1,2 +1,7 @@
 # books
-Typesetting books for print-on-demand with Bash and LaTeX
+FOSS typesetting with LaTeX and a bunch of automation tools (bash,perl,vim,sed,...)
+
+---
+# Included scripts
+`auto_lettr`
+
