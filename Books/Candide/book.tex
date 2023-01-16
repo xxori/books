@@ -5,12 +5,7 @@
 \usepackage{graphicx}
 \usepackage[final]{microtype}
 
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-
-\newcommand{\chapter}[1]{\begingroup
-\let\clearpage\relax
-\chapter{#1}
-\endgroup}
+\usepackage[pdfauthor={Voltaire},pdftitle={Candide}, pdfsubject={Candide is the story of a gentle man who, though pummeled and slapped in every direction by fate, clings desperately to the belief that he lives in "the best of all possible worlds." On the surface a witty, bantering tale, this eighteenth-century classic is actually a savage, satiric thrust at the philosophical optimism that proclaims that all disaster and human suffering is part of a benevolent cosmic plan.}, pdfproducer={XeLaTeX},pdfcreator={XeLaTeX}]{hyperref}
 
 \usepackage{etoolbox}
 \makeatletter
@@ -22,6 +17,8 @@
 \makeevenhead{pter}{\textsc{Voltaire}}{}{}
 \makeoddfoot{pter}{}{\thepage}{}
 \makeevenfoot{pter}{}{\thepage}{}
+
+\usepackage[autostyle]{csquotes}
 
 \pagestyle{pter}
 \chapterstyle{thatcher}
@@ -51,8 +48,6 @@
  BoldItalicFont=cmunso.ttf,%
  ItalicFont=cmunsi.ttf]{cmunss.ttf}
 
-\newcommand{\chapter}[1]{\let\clearpage\relax\chapter{#1}hello}
-
 \begin{document}
 \thispagestyle{empty}
 \begin{center}
@@ -76,10 +71,8 @@ Commentary by \textsc{Philip Littell} \\
 \\
 This work is dedicated to the public domain
 \frontmatter
-\begin{KeepFromToc}
 \tableofcontents
-\end{KeepFromToc}
-\input{introduction}
+\include{introduction}
 \clearpage
 \vspace*{4cm}
 \thispagestyle{empty}
@@ -121,9 +114,6 @@ or Optimism\\
 \input{chapter28}
 \input{chapter29}
 \input{chapter30}
-\newpage
-\thispagestyle{empty}
-\phantom{empty}
 \newpage
 \thispagestyle{empty}
 \phantom{empty}

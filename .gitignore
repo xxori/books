@@ -5,6 +5,7 @@ Books/*/*.pl
 Books/*/*.nvim
 *.bak
 Books/*/*.pdf
+source.*
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
