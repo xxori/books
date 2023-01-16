@@ -1,9 +1,10 @@
 .DS_Store
 *.psd
-*/*.sh
-*/*.pl
-*/*.nvim
-*/*.bak
+Books/*/*.sh
+Books/*/*.pl
+Books/*/*.nvim
+*.bak
+Books/*/*.pdf
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
