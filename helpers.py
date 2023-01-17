@@ -1,11 +1,41 @@
 import re
+import shutil
 import os
 from config import *
+import jinja2
+
+env = jinja2.Environment(
+    block_start_string="\\BLOCK{",
+    block_end_string="}",
+    variable_start_string="\\VAR{",
+    variable_end_string="}",
+    comment_start_string="\\#{",
+    comment_end_string="}",
+    line_statement_prefix="%%",
+    line_comment_prefix="%#",
+    trim_blocks=True,
+    autoescape=False,
+    loader=jinja2.FileSystemLoader(os.path.abspath(WORKINGDIR)),
+)
 
 
 class FileHolder:
     def __init__(self, filename: str):
         self.filename = filename
+
+    def fix_newlines(self):
+        self._file_sub(r"\n\n", r"ඞ")  # Heheheha
+        self._file_sub(r"\n", r"")
+        self._file_sub(r"ඞ", r"\n\n")
+        return self
+
+    def fix_latex(self):
+        self._file_sub(r"\\vspace\{[^}]*\}\n", "")
+        self._file_sub(r"\\baselineskip=.*\n", "")
+        self._file_sub(r"\\leftskip=.*\n", "")
+        self._file_sub(r"\\parindent=.*\n", "")
+        self._file_sub(r'\\texttt\{"\}', '"')
+        return self
 
     def fix_footnotes(self):
         with open(self.filename, "r+") as f:
@@ -22,19 +52,19 @@ class FileHolder:
             write_rp(f, text)
         return self
 
-    def _file_sub(self, find, repl):
-        with open(self.filename, "r+") as f:
-            text = f.read()
-            text = re.sub(find, repl, text)
-            write_rp(f, text)
-        return self
-
     def fix_underscore_italics(self):
         self._file_sub(r"_([^_]+)_", r"\\textit{\1}")
         return self
 
     def fix_quotations(self):
-        self._file_sub(r'"([^"]+)"', r"``\1''")
+        self._file_sub(r'"([^"\n]+)"', r"``\1''")
+        return self
+
+    def _file_sub(self, find, repl):
+        with open(self.filename, "r+") as f:
+            text = f.read()
+            text = re.sub(find, repl, text)
+            write_rp(f, text)
         return self
 
 
@@ -58,14 +88,40 @@ def auto_lettrine():
 
 
 def init_chapters():
-    for i in range(CHAPTERS + 1):
+    for i in range(1, CHAPTERS + 1):
         if not os.path.exists(f"chapter{i}.tex"):
             with open(f"chapter{i}.tex", "w+") as f:
                 f.write(r"\chapter{}")
 
 
+def init_root():
+    # Run this before chdir to WORKINGDIR
+    if not os.path.exists(os.path.join(os.getcwd(),WORKINGDIR, ROOTFILE)):
+        shutil.copy(
+            os.path.join(os.getcwd(), "Template", "book.tex"),
+            os.path.join(WORKINGDIR, ROOTFILE),
+        )
+
+
+def write_template():
+    template = env.get_template(ROOTFILE)
+  
+    with open(ROOTFILE, "r+") as f:
+        if r"\VAR" in f.read():
+            ftext = template.render(**CVARS)
+            f.truncate(0)
+            f.write(ftext)
+
+
 if __name__ == "__main__":
+    # init_root()
+
     if WORKINGDIR:
-        os.chdir(os.path.join(os.getcwd(),WORKINGDIR))
-    init_chapters()
-    f = FileHolder("source.txt")
+        os.chdir(os.path.join(os.getcwd(), WORKINGDIR))
+    if SOURCE:
+        f = FileHolder(SOURCE)
+    else:
+        f = FileHolder("soure.txt")
+    # write_template()
+    # init_chapters()
+    f.fix_latex().fix_newlines().fix_quotations()

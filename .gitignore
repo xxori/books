@@ -6,6 +6,10 @@ Books/*/*.nvim
 *.bak
 Books/*/*.pdf
 source.*
+config.py
+venv/
+
+__pycache__
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

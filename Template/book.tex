@@ -1,7 +1,17 @@
-\documentclass[a5paper, openany]{memoir}
+\documentclass[a5paper, openany, 11pt]{memoir}
 
 \usepackage[inner=0.7in,outer=0.5in]{geometry}
 \usepackage{lettrine}
+\usepackage{graphicx}
+
+% Enable for final build
+%\usepackage[final]{microtype}
+
+\usepackage[pdfauthor={\VAR{AUTHOR}},
+            pdftitle ={\VAR{TITLE}},
+            pdfsubject={\VAR{BLURB}},
+            pdfproducer={kek.church book autorender},
+            pdfcreator={XeLaTeX}]{hyperref}
 
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 
@@ -22,18 +32,47 @@
 \tolerance=2000 
 \emergencystretch=10pt
 
+\usepackage[autostyle]{csquotes}
+
+\makepagestyle{pter}
+\makeoddhead{pter}{}{}{\textsc{\VAR{TITLE}}}
+\makeevenhead{pter}{\textsc{\var{AUTHOR}}}{}{}
+\makeoddfoot{pter}{}{\thepage}{}
+\makeevenfoot{pter}{}{\thepage}{}
+
+\pagestyle{pter}
+\chapterstyle{dash}
+
+\setlength{\parskip}{0.3\baselineskip}%
+\setlength{\parindent}{0pt}%
+
+\pretolerance=10000
+\tolerance=2000 
+\emergencystretch=10pt
+
+\interfootnotelinepenalty=10000
+
+
 \usepackage[english,shorthands=off]{babel}
-\babelfont{rm}[Path=/Users/patrick/Library/Fonts,%
+\babelfont{rm}[Path=\VAR{FONTDIR},%
  BoldFont=LinLibertine_RB.otf,%
  BoldItalicFont=LinLibertine_RBI.otf,%
  ItalicFont=LinLibertine_RI.otf]{LinLibertine_R.otf}
-\babelfont{tt}[Scale=MatchLowercase,%
- Path=/Users/patrick/Library/Fonts,%
+ \babelfont{tt}[Scale=MatchLowercase,%
+ Path=\VAR{FONTDIR},%
  BoldFont=cmuntb.ttf,%
  BoldItalicFont=cmuntx.ttf,%
  ItalicFont=cmunit.ttf]{cmuntt.ttf}
 \babelfont{sf}[Scale=MatchLowercase,%
- Path=/Users/patrick/Library/Fonts,%
+ Path=\VAR{FONTDIR},%
  BoldFont=cmunsx.ttf,%
  BoldItalicFont=cmunso.ttf,%
- ItalicFont=cmunsi.ttf]{cmunss.ttf}
+ ItalicFont=cunsi.ttf]{cmunss.ttf}
+
+\begin{document}
+\thispagestyle{empty}
+\BLOCK{ for x in range(1,CHAPTERS+1) }
+  \include{chapter\VAR{x}}
+\BLOCK{ endfor }
+\end{document}
+
