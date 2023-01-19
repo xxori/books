@@ -9,7 +9,7 @@ source.*
 config.py
 venv/
 *.rtf
-
+config.py
 __pycache__/
 
 ## Core latex/pdflatex auxiliary files:
