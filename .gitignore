@@ -8,6 +8,7 @@ venv/
 config.py
 __pycache__/
 *.tpbuild
+legacy_scripts/
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

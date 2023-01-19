@@ -1,1 +1,0 @@
-%s/\(\\chapter{[^\}]*\}\)\n[ ]\?\([`']*[A-Za-z]\)\(['"`A-Za-z]*\)/\1\r\\lettrine\[lraise=0.1,nindent=0em,slope=-.5em]\{\2\}\{\3\}
