@@ -8,6 +8,7 @@ Books/*/*.pdf
 source.*
 config.py
 venv/
+*.rtf
 
 __pycache__/
 
