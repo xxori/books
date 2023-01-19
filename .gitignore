@@ -1,10 +1,6 @@
 .DS_Store
 *.psd
-Books/*/*.sh
-Books/*/*.pl
-Books/*/*.nvim
 *.bak
-Books/*/*.pdf
 source.*
 config.py
 venv/
