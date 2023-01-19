@@ -3,7 +3,7 @@
 \usepackage[inner=0.7in,outer=0.5in]{geometry}
 \usepackage{lettrine}
 \usepackage{graphicx}
-% \usepackage[final]{microtype}
+\usepackage[final]{microtype}
 
 \usepackage[hidelinks,pdfauthor={Voltaire},pdftitle={Candide}, pdfsubject={Candide is the story of a gentle man who, though pummeled and slapped in every direction by fate, clings desperately to the belief that he lives in "the best of all possible worlds." On the surface a witty, bantering tale, this eighteenth-century classic is actually a savage, satiric thrust at the philosophical optimism that proclaims that all disaster and human suffering is part of a benevolent cosmic plan.}, pdfproducer={XeLaTeX},pdfcreator={XeLaTeX}]{hyperref}
 
@@ -22,7 +22,7 @@
 \pagestyle{pter}
 \chapterstyle{thatcher}
 
-\setlength{\parskip}{0.3\baselineskip}%
+\setlength{\parskip}{0.2\baselineskip}%
 \setlength{\parindent}{0pt}%
 
 \pretolerance=10000
@@ -70,7 +70,9 @@ Commentary by \textsc{Philip Littell} \\
 \\
 This work is dedicated to the public domain
 \frontmatter
+\begin{KeepFromToc}
 \tableofcontents
+\end{KeepFromToc}
 \include{introduction}
 \clearpage
 \vspace*{4cm}
@@ -83,6 +85,7 @@ or Optimism\\
 \end{center}
 \newpage
 \mainmatter
+\addcontentsline{toc}{chapter}{Candide, or Optimism}
 \input{chapter1}
 \input{chapter2}
 \input{chapter3}
