@@ -1,18 +1,18 @@
-CHAPTERS:int = 3
-AUTHOR:str = "john smith"
-TITLE:str = "book title"
-SOURCE:str = "source.txt"
-WORKINGDIR:str = "Books/Steppenwolf"
-FONTDIR:str = "/usr/share/fonts"
-ROOTFILE:str = "book.tex"
-YEAROFPUBLISH:str = "1984"
-OTHERCONTRIBUTIONS:dict[str,str] = {"Translated": "example translator", "Updated": "example updater"}
+CHAPTERS: int = 3
+AUTHOR: str = "John Doe"
+TITLE: str = "Book Title"
+SOURCE: str = "source.tex"
+WORKING_DIR: str = "Books/book1"
+FONT_DIR: str = "/usr/share/fonts"
+ROOT_FILE: str = "book.tex"
+YEAR_OF_PUBLISH: str = "1984"
+OTHER_CONTRIBUTIONS: dict[str, str] = {"Translated": "Example translator", "Updated": "Example updater"}
 
 # DO NOT EDIT BELOW THIS LINE
 
 # Create dictionary of config vars for passing to templates later
 loc = locals().copy()
-CVARS = {}
-for k,v in loc.items():
+CFG_VARS = {}
+for k, v in loc.items():
     if k.upper() == k:
-        CVARS[k]=v
+        CFG_VARS[k] = v

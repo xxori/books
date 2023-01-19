@@ -5,17 +5,17 @@ from config import *
 import jinja2
 
 env = jinja2.Environment(
-    block_start_string="\\BLOCK{",
-    block_end_string="}",
-    variable_start_string="\\VAR{",
-    variable_end_string="}",
-    comment_start_string="\\#{",
-    comment_end_string="}",
-    line_statement_prefix="%%",
-    line_comment_prefix="%#",
-    trim_blocks=True,
-    autoescape=False,
-    loader=jinja2.FileSystemLoader(os.path.abspath(WORKINGDIR)),
+    block_start_string = "\\BLOCK{",
+    block_end_string = "}",
+    variable_start_string = "\\VAR{",
+    variable_end_string = "}",
+    comment_start_string = "\\#{",
+    comment_end_string = "}",
+    line_statement_prefix = "%%",
+    line_comment_prefix = "%#",
+    trim_blocks = True,
+    autoescape = False,
+    loader = jinja2.FileSystemLoader(os.path.abspath(WORKING_DIR)),
 )
 
 
@@ -24,6 +24,7 @@ class FileHolder:
         self.filename = filename
 
     def fix_newlines(self):
+        # TODO: Find a better method so Tamil texts aren't formatted weirdly
         self._file_sub(r"\n\n", r"ඞ")  # Heheheha
         self._file_sub(r"\n", r"")
         self._file_sub(r"ඞ", r"\n\n")
@@ -95,20 +96,20 @@ def init_chapters():
 
 
 def init_root():
-    # Run this before chdir to WORKINGDIR
-    if not os.path.exists(os.path.join(os.getcwd(),WORKINGDIR, ROOTFILE)):
+    # Run this before chdir to WORKING_DIR
+    if not os.path.exists(os.path.join(os.getcwd(), WORKING_DIR, ROOT_FILE)):
         shutil.copy(
             os.path.join(os.getcwd(), "Template", "book.tex"),
-            os.path.join(WORKINGDIR, ROOTFILE),
+            os.path.join(WORKING_DIR, ROOT_FILE),
         )
 
 
 def write_template():
-    template = env.get_template(ROOTFILE)
+    template = env.get_template(ROOT_FILE)
   
-    with open(ROOTFILE, "r+") as f:
+    with open(ROOT_FILE, "r+") as f:
         if r"\VAR" in f.read():
-            ftext = template.render(**CVARS)
+            ftext = template.render(**CFG_VARS)
             f.truncate(0)
             f.write(ftext)
 
@@ -116,8 +117,8 @@ def write_template():
 if __name__ == "__main__":
     # init_root()
 
-    if WORKINGDIR:
-        os.chdir(os.path.join(os.getcwd(), WORKINGDIR))
+    if WORKING_DIR:
+        os.chdir(os.path.join(os.getcwd(), WORKING_DIR))
     if SOURCE:
         f = FileHolder(SOURCE)
     else:
