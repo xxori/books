@@ -7,6 +7,7 @@ venv/
 *.rtf
 config.py
 __pycache__/
+*.tpbuild
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
