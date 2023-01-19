@@ -1,3 +1,3 @@
 #!/bin/bash
 
-xelatex -interaction=batchmode "$TEXPAD_ROOTFILE"
+xelatex -interaction=batchmode "$TEXPAD_ROOT_FILE"
