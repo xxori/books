@@ -1,5 +1,5 @@
 # books
-Typesetting with LaTeX with Python.
+Typesetting LaTeX with Python.
 
 Can be used for digital reading, or print-on-demand prints with Lulu, Amazon KDP, etc...
 
