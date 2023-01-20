@@ -1,3 +1,5 @@
+# GITHUB PROJECT ARCHIVED. SEE https://git.kek.church/xxori/books FOR NEW VERSION
+
 # books
 Typesetting LaTeX with Python.
 
